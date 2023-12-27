@@ -12,4 +12,8 @@
   &:hover {
     background: rgba(255, 255, 255, 0.1);
   }
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }

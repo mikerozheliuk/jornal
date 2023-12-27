@@ -1,59 +1,49 @@
-import "./App.css";
+import { useState } from "react";
 
 import Body from "./layouts/Body/Body";
-import Header from "./components/Header/Header";
 import LeftPanel from "./layouts/leftPanel/LeftPanel";
-import CardButton from "./components/CartButton/CardButton";
-import JornalItem from "./components/JornalItem/JornalItem";
+
+import Header from "./components/Header/Header";
+
 import JornalList from "./components/JornalList/JornalList";
 import JornalForm from "./components/JornalForm/JornalForm";
 import JornalAddButton from "./components/JornalAddButton/JornalAddButton";
 
+import "./App.css";
+
+const INITIAL_DATA = [
+  { id: 1, title: "Подготовка к обновлению курсов", text: "Сегодня провёл весь день за...", date: new Date() },
+
+  { id: 2, title: "Поход в годы", text: "Думал, что очень много време...", date: new Date() },
+
+  { id: 3, title: "Первая заметка", text: "Создал первую заметку, чтобы ...", date: new Date() },
+];
+
 function App() {
-  const data = [
-    {
-      title: "Подготовка к обновлению курсов",
-      text: "Сегодня провёл весь день за...",
-      date: new Date(),
-    },
+  const [items, setItems] = useState(INITIAL_DATA);
 
-    {
-      title: "Поход в годы",
-      text: "Думал, что очень много време...",
-      date: new Date(),
-    },
-
-    {
-      title: "Первая заметка",
-      text: "Создал первую заметку, чтобы ...",
-      date: new Date(),
-    },
-  ];
+  const addItem = (item) => {
+    setItems((oldItems) => [
+      ...oldItems,
+      {
+        text: item.text,
+        title: item.title,
+        date: new Date(item.date),
+        id: oldItems.length > 0 ? Math.max(...oldItems.map((i) => i.id)) + 1 : 1,
+      },
+    ]);
+  };
 
   return (
     <div className="app">
       <LeftPanel>
         <Header />
         <JornalAddButton />
-        <JornalList>
-          <CardButton>
-            <JornalItem title={data[0].title} text={data[0].text} date={data[0].date} />
-          </CardButton>
-
-          <CardButton>
-            {" "}
-            <JornalItem title={data[1].title} text={data[1].text} date={data[1].date} />{" "}
-          </CardButton>
-
-          <CardButton>
-            {" "}
-            <JornalItem title={data[2].title} text={data[2].text} date={data[2].date} />
-          </CardButton>
-        </JornalList>
+        <JornalList items={items} />
       </LeftPanel>
 
       <Body>
-        <JornalForm />
+        <JornalForm onSubmit={addItem} />
       </Body>
     </div>
   );

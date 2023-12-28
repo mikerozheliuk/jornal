@@ -1,5 +1,6 @@
 import CardButton from "../CartButton/CardButton";
 import JornalItem from "../JornalItem/JornalItem";
+
 import "./JornalList.scss";
 
 function JornalList({ items }) {

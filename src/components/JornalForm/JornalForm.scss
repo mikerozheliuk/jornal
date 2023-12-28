@@ -1,9 +1,0 @@
-.jornal-form {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-
-  &:not(:last-child) {
-    margin-bottom: 30px;
-  }
-}

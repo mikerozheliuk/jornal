@@ -1,7 +1,6 @@
-import "./Button.scss";
+import cn from "classnames";
+import styles from "./Button.module.scss";
 
-function Button({ text }) {
-  return <button className="button accent">{text}</button>;
-}
+const Button = ({ text }) => <button className={cn(styles.button, styles.accent)}>{text}</button>;
 
 export default Button;

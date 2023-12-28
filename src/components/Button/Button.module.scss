@@ -12,6 +12,7 @@
 
 .accent {
   background-color: #312eb5;
+  transition: all 0.5s;
   &:hover {
     background-color: #171665;
   }

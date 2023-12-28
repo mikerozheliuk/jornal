@@ -43,15 +43,15 @@ function JornalForm({ onSubmit }) {
 
   return (
     <form className="jornal-form" onSubmit={addJournalItem}>
-      <input type="text" name="title" style={{ border: formValodState.title ? undefined : "1px solid red" }} />
-      <input type="date" name="date" style={{ border: formValodState.date ? undefined : "1px solid red" }} />
+      <input type="text" name="title" style={{ border: formValidState.title ? undefined : "1px solid red" }} />
+      <input type="date" name="date" style={{ border: formValidState.date ? undefined : "1px solid red" }} />
       <input type="text" name="tag" />
       <textarea
         name="post"
         id=""
         cols="30"
         rows="10"
-        style={{ border: formValodState.post ? undefined : "1px solid red" }}
+        style={{ border: formValidState.post ? undefined : "1px solid red" }}
       ></textarea>
       <Button text="Save" />
     </form>

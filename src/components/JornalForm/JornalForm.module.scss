@@ -1,0 +1,50 @@
+.jornalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.input-title {
+  border: none;
+  background: none;
+
+  color: #fff;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 125%; /* 40/32 */
+  border-bottom: 1px solid #272727;
+  width: 100%;
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+}
+
+.formLabel {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 150px;
+}
+
+.input {
+  border: none;
+  background: none;
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 128.571429%; /* 18/14 */
+  border-bottom: 1px solid #272727;
+  width: 100%;
+}
+
+.invalid {
+  border: 1px solid red;
+  background: rgb(68, 6, 6);
+}

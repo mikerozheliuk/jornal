@@ -1,7 +1,9 @@
 import { useState } from "react";
+import cn from "classnames";
+
 import Button from "../Button/Button";
 
-import "./JornalForm.scss";
+import styles from "./JornalForm.module.scss";
 
 function JornalForm({ onSubmit }) {
   const [formValidState, setformValidState] = useState({
@@ -42,16 +44,48 @@ function JornalForm({ onSubmit }) {
   };
 
   return (
-    <form className="jornal-form" onSubmit={addJournalItem}>
-      <input type="text" name="title" style={{ border: formValodState.title ? undefined : "1px solid red" }} />
-      <input type="date" name="date" style={{ border: formValodState.date ? undefined : "1px solid red" }} />
-      <input type="text" name="tag" />
+    <form className={styles.jornalForm} onSubmit={addJournalItem}>
+      <div>
+        <input
+          type="text"
+          name="title"
+          className={cn(styles["input-title"], {
+            [styles["invalid"]]: !formValidState.title,
+          })}
+        />
+      </div>
+      <div className={styles.formRow}>
+        <label htmlFor="date" className={styles.formLabel}>
+          <img src="/public/data.svg" alt="icons" />
+          <span>Дата</span>
+        </label>
+        <input
+          id="date"
+          type="date"
+          name="date"
+          className={cn(styles["input"], {
+            [styles["invalid"]]: !formValidState.date,
+          })}
+        />
+      </div>
+
+      <div className={styles.formRow}>
+        <label htmlFor="tag" className={styles.formLabel}>
+          <img src="/public/folder.svg" alt="icons" />
+          <span>Мітка</span>
+        </label>
+
+        <input type="text" name="tag" id="tag" className={styles["input"]} />
+      </div>
+
       <textarea
         name="post"
         id=""
         cols="30"
         rows="10"
-        style={{ border: formValodState.post ? undefined : "1px solid red" }}
+        className={cn(styles["input"], {
+          [styles["invalid"]]: !formValidState.post,
+        })}
       ></textarea>
       <Button text="Save" />
     </form>
